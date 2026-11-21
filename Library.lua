@@ -3587,6 +3587,7 @@ function Library:CreateWindow(...)
     local TransparencyCache = {};
     local Toggled = false;
     local Fading = false;
+    local MouseIconState = InputService.MouseIconEnabled; -- the game's real cursor state, captured once
 
     function Library:Toggle()
         if Fading then
@@ -3604,8 +3605,6 @@ function Library:CreateWindow(...)
 
             task.spawn(function()
                 -- TODO: add cursor fade?
-                local State = InputService.MouseIconEnabled;
-
                 local Cursor = Drawing.new('Triangle');
                 Cursor.Thickness = 1;
                 Cursor.Filled = true;
@@ -3619,6 +3618,7 @@ function Library:CreateWindow(...)
 
                 while Toggled and ScreenGui.Parent do
                     InputService.MouseIconEnabled = false;
+                    InputService.MouseBehavior = Enum.MouseBehavior.Default; -- stop shift-lock from turning the camera while the menu is open
 
                     local mPos = InputService:GetMouseLocation();
 
@@ -3635,7 +3635,7 @@ function Library:CreateWindow(...)
                     RenderStepped:Wait();
                 end;
 
-                InputService.MouseIconEnabled = State;
+                InputService.MouseIconEnabled = MouseIconState;
 
                 Cursor:Remove();
                 CursorOutline:Remove();
