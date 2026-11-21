@@ -2077,6 +2077,18 @@ do
             HideBorderRight.Visible = not (X == Slider.MaxSize or X == 0);
         end;
 
+        -- Keep the fill width matched to the slider's real rendered width so it
+        -- reaches 100% at max (stock Linoria hardcodes MaxSize = 232).
+        local function UpdateSliderMaxSize()
+            local Width = SliderInner.AbsoluteSize.X - 2;
+            if Width > 1 then
+                Slider.MaxSize = Width;
+                Slider:Display();
+            end
+        end
+        SliderInner:GetPropertyChangedSignal('AbsoluteSize'):Connect(UpdateSliderMaxSize);
+        task.defer(UpdateSliderMaxSize);
+
         function Slider:OnChanged(Func)
             Slider.Changed = Func;
             Func(Slider.Value);
