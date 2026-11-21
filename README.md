@@ -1,4 +1,4 @@
-# linoria-sidebar
+# skidware.cc
 
 A **modified fork of [LinoriaLib](https://github.com/violin-suzutsuki/LinoriaLib)** with the tab bar
 moved from the top to a **left icon rail**. Everything else is Linoria's proven rendering —
@@ -8,21 +8,23 @@ groupboxes, toggles, sliders, dropdowns, key pickers, color pickers, SaveManager
 - **Tabs on the left, not the top** — a vertical rail down the side instead of a horizontal bar.
 - **Icon tabs** — `Window:AddTab(name, iconName)` renders a [Lucide](https://lucide.dev) icon beside
   the label; the active tab gets an accent bar and an accent-tinted icon.
+- **Black window outline** (instead of the stock blue accent border).
+- **Arial font** (closer to the classic GameSense look) in place of the default `Code` font.
 - **Larger default window** (720×600) to fit the rail + two groupbox columns.
 
 ## Load it
 
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/cuckcoding/linoria-sidebar/main/example.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/cuckcoding/skidware/main/example.lua"))()
 ```
 
 or use it as a library:
 
 ```lua
-local repo = "https://raw.githubusercontent.com/cuckcoding/linoria-sidebar/main/"
+local repo = "https://raw.githubusercontent.com/cuckcoding/skidware/main/"
 local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
 
-local Window = Library:CreateWindow({ Title = "my hub", Center = true, AutoShow = true })
+local Window = Library:CreateWindow({ Title = "skidware.cc", Center = true, AutoShow = true })
 
 -- 2nd arg is a Lucide icon name (or "rbxassetid://123", or nil for no icon)
 local Tab = Window:AddTab("Rage", "crosshair")
@@ -42,13 +44,14 @@ image, or `nil` to show just the label.
 
 The element API is **100% stock Linoria** — see the
 [LinoriaLib docs](https://github.com/violin-suzutsuki/LinoriaLib). Only `Window:AddTab` changed
-(it now accepts an icon) and the window layout. `Toggles`, `Options`, SaveManager and ThemeManager
+(it now accepts an icon) and the window styling. `Toggles`, `Options`, SaveManager and ThemeManager
 all behave exactly as upstream.
 
 ## Credits / license
 
 - Base library: **LinoriaLib** by [violin-suzutsuki](https://github.com/violin-suzutsuki/LinoriaLib)
-  (and the original Linoria authors). This repo only restructures the tab layout and adds icons.
+  (and the original Linoria authors). This repo restructures the tab layout, swaps the font/outline,
+  and adds icons — the rendering engine and element API are theirs.
 - Tab icons: the [Lucide](https://lucide.dev) icon set via
   [latte-soft/lucide-roblox](https://github.com/latte-soft/lucide-roblox) (ISC).
 

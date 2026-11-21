@@ -1,14 +1,14 @@
 --[[
-    Linoria-Sidebar — example
+    skidware.cc — example
     A modified LinoriaLib with the tab bar moved to a LEFT ICON RAIL.
 
     Run:
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/cuckcoding/linoria-sidebar/main/example.lua"))()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/cuckcoding/skidware/main/example.lua"))()
 
     Toggle the menu with  End  (or RightShift via the Menu group).
 ]]
 
-local repo = "https://raw.githubusercontent.com/cuckcoding/linoria-sidebar/main/"
+local repo = "https://raw.githubusercontent.com/cuckcoding/skidware/main/"
 
 local Library       = loadstring(game:HttpGet(repo .. "Library.lua"))()
 local ThemeManager  = loadstring(game:HttpGet(repo .. "addons/ThemeManager.lua"))()
@@ -18,7 +18,7 @@ local Options = getgenv().Options
 local Toggles = getgenv().Toggles
 
 local Window = Library:CreateWindow({
-    Title = "linoria • sidebar",
+    Title = "skidware.cc",
     Center = true,
     AutoShow = true,
     TabPadding = 4,
